@@ -1,8 +1,8 @@
 import _extends from "@babel/runtime/helpers/esm/extends";
 import * as React from 'react';
-import Header from "../Header";
 import PanelContext from "../../PanelContext";
 import { formatValue } from "../../utils/dateUtil";
+import Header from "../Header";
 
 function DateHeader(props) {
   var prefixCls = props.prefixCls,
@@ -56,7 +56,7 @@ function DateHeader(props) {
     onPrev: onPrevMonth,
     onNext: onNextMonth,
     onSuperNext: onNextYear
-  }), monthYearNodes);
+  }), monthYearNodes, " MY-TEST");
 }
 
 export default DateHeader;

@@ -1,14 +1,17 @@
-import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-import { noteOnce } from 'rc-util/lib/warning';
-import weekday from 'dayjs/plugin/weekday';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import buddhistEra from 'dayjs/plugin/buddhistEra';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import localeData from 'dayjs/plugin/localeData';
+import weekday from 'dayjs/plugin/weekday';
 import weekOfYear from 'dayjs/plugin/weekOfYear';
 import weekYear from 'dayjs/plugin/weekYear';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { noteOnce } from 'rc-util/lib/warning';
+
+import type { Dayjs } from 'dayjs';
 import type { GenerateConfig } from '.';
 
+dayjs.extend(buddhistEra);
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 dayjs.extend(weekday);
@@ -85,7 +88,7 @@ const localeMap: IlocaleMapObject = {
   // sr_RS:
   // sv_SE:
   // ta_IN:
-  // th_TH:
+  th_TH: 'th-TH',
   // tr_TR:
   // uk_UA:
   // ur_PK:

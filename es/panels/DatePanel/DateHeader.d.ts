@@ -1,5 +1,5 @@
-import type { Locale } from '../../interface';
 import type { GenerateConfig } from '../../generate';
+import type { Locale } from '../../interface';
 export declare type DateHeaderProps<DateType> = {
     prefixCls: string;
     viewDate: DateType;
