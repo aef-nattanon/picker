@@ -1,12 +1,13 @@
 import * as React from 'react';
-import type { GenerateConfig } from '../../generate';
+
 import { YEAR_DECADE_COUNT } from '.';
-import type { Locale, NullableDateType } from '../../interface';
 import useCellClassName from '../../hooks/useCellClassName';
-import { formatValue, isSameYear } from '../../utils/dateUtil';
 import RangeContext from '../../RangeContext';
+import { formatValue, isSameYear } from '../../utils/dateUtil';
 import PanelBody from '../PanelBody';
 
+import type { GenerateConfig } from '../../generate';
+import type { Locale, NullableDateType } from '../../interface';
 export const YEAR_COL_COUNT = 3;
 const YEAR_ROW_COUNT = 4;
 
@@ -57,10 +58,10 @@ function YearBody<DateType>(props: YearBodyProps<DateType>) {
       rowNum={YEAR_ROW_COUNT}
       colNum={YEAR_COL_COUNT}
       baseDate={baseYear}
-      getCellText={generateConfig.getYear}
+      getCellText={locale.locale == 'th_TH' ? generateConfig.getYearTH : generateConfig.getYear}
       getCellClassName={getCellClassName}
       getCellDate={generateConfig.addYear}
-      titleCell={date =>
+      titleCell={(date) =>
         formatValue(date, {
           locale,
           format: 'YYYY',

@@ -10,6 +10,7 @@ export type Locale = {
   yearFormat: string;
   monthFormat?: string;
   quarterFormat?: string;
+  isTH?: boolean;
 
   today: string;
   now: string;

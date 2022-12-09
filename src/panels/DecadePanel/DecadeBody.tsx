@@ -1,14 +1,17 @@
 import * as React from 'react';
-import type { GenerateConfig } from '../../generate';
+
 import { DECADE_DISTANCE_COUNT, DECADE_UNIT_DIFF } from '.';
 import PanelBody from '../PanelBody';
 
+import type { GenerateConfig } from '../../generate';
+import type { Locale } from '../../interface';
 export const DECADE_COL_COUNT = 3;
 const DECADE_ROW_COUNT = 4;
 
 export type YearBodyProps<DateType> = {
   prefixCls: string;
   generateConfig: GenerateConfig<DateType>;
+  locale: Locale;
   viewDate: DateType;
   disabledDate?: (date: DateType) => boolean;
   onSelect: (value: DateType) => void;
@@ -16,7 +19,7 @@ export type YearBodyProps<DateType> = {
 
 function DecadeBody<DateType>(props: YearBodyProps<DateType>) {
   const DECADE_UNIT_DIFF_DES = DECADE_UNIT_DIFF - 1;
-  const { prefixCls, viewDate, generateConfig } = props;
+  const { locale, prefixCls, viewDate, generateConfig } = props;
 
   const cellPrefixCls = `${prefixCls}-cell`;
 
@@ -51,9 +54,11 @@ function DecadeBody<DateType>(props: YearBodyProps<DateType>) {
       rowNum={DECADE_ROW_COUNT}
       colNum={DECADE_COL_COUNT}
       baseDate={baseDecadeYear}
-      getCellText={date => {
+      getCellText={(date) => {
         const startDecadeNumber = generateConfig.getYear(date);
-        return `${startDecadeNumber}-${startDecadeNumber + DECADE_UNIT_DIFF_DES}`;
+        const newDate = locale.locale == 'th_TH' ? startDecadeNumber + 543 : startDecadeNumber;
+
+        return `${newDate}-${newDate + DECADE_UNIT_DIFF_DES}`;
       }}
       getCellClassName={getCellClassName}
       getCellDate={(date, offset) => generateConfig.addYear(date, offset * DECADE_UNIT_DIFF)}

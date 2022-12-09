@@ -1,11 +1,12 @@
 import * as React from 'react';
 import type { GenerateConfig } from '../generate';
-import type { PanelMode } from '../interface';
+import type { Locale, PanelMode } from '../interface';
 export declare type PanelBodyProps<DateType> = {
     prefixCls: string;
     disabledDate?: (date: DateType) => boolean;
     onSelect: (value: DateType) => void;
     picker?: PanelMode;
+    locale?: Locale;
     headerCells?: React.ReactNode;
     rowNum: number;
     colNum: number;

@@ -7,6 +7,7 @@ export declare type Locale = {
     yearFormat: string;
     monthFormat?: string;
     quarterFormat?: string;
+    isTH?: boolean;
     today: string;
     now: string;
     backToToday: string;

@@ -56,7 +56,7 @@ function DateHeader(props) {
     onPrev: onPrevMonth,
     onNext: onNextMonth,
     onSuperNext: onNextYear
-  }), monthYearNodes, " MY-TEST");
+  }), monthYearNodes);
 }
 
 export default DateHeader;

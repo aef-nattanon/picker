@@ -1,8 +1,10 @@
 import type { GenerateConfig } from '../../generate';
+import type { Locale } from '../../interface';
 export declare type YearHeaderProps<DateType> = {
     prefixCls: string;
     viewDate: DateType;
     generateConfig: GenerateConfig<DateType>;
+    locale: Locale;
     onPrevDecades: () => void;
     onNextDecades: () => void;
 };

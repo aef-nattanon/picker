@@ -1,11 +1,12 @@
 import _extends from "@babel/runtime/helpers/esm/extends";
 import * as React from 'react';
-import Header from "../Header";
 import { DECADE_DISTANCE_COUNT } from '.';
 import PanelContext from "../../PanelContext";
+import Header from "../Header";
 
 function DecadeHeader(props) {
-  var prefixCls = props.prefixCls,
+  var locale = props.locale,
+      prefixCls = props.prefixCls,
       generateConfig = props.generateConfig,
       viewDate = props.viewDate,
       onPrevDecades = props.onPrevDecades,
@@ -26,7 +27,7 @@ function DecadeHeader(props) {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecades,
     onSuperNext: onNextDecades
-  }), startYear, "-", endYear);
+  }), locale.locale == 'th_TH' ? startYear + 543 : startYear, "-", locale.locale == 'th_TH' ? endYear + 543 : endYear);
 }
 
 export default DecadeHeader;

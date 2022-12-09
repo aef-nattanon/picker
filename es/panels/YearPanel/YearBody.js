@@ -2,8 +2,8 @@ import _extends from "@babel/runtime/helpers/esm/extends";
 import * as React from 'react';
 import { YEAR_DECADE_COUNT } from '.';
 import useCellClassName from "../../hooks/useCellClassName";
-import { formatValue, isSameYear } from "../../utils/dateUtil";
 import RangeContext from "../../RangeContext";
+import { formatValue, isSameYear } from "../../utils/dateUtil";
 import PanelBody from "../PanelBody";
 export var YEAR_COL_COUNT = 3;
 var YEAR_ROW_COUNT = 4;
@@ -49,7 +49,7 @@ function YearBody(props) {
     rowNum: YEAR_ROW_COUNT,
     colNum: YEAR_COL_COUNT,
     baseDate: baseYear,
-    getCellText: generateConfig.getYear,
+    getCellText: locale.locale == 'th_TH' ? generateConfig.getYearTH : generateConfig.getYear,
     getCellClassName: getCellClassName,
     getCellDate: generateConfig.addYear,
     titleCell: function titleCell(date) {

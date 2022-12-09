@@ -1,3 +1,4 @@
+import 'dayjs/locale/th';
 import Picker from './Picker';
 import PickerPanel from './PickerPanel';
 import RangePicker from './RangePicker';

@@ -1,24 +1,26 @@
-import React from 'react';
-import type { Moment } from 'moment';
-import moment from 'moment';
-import Picker from '../../src/Picker';
-import momentGenerateConfig from '../../src/generate/moment';
-import zhCN from '../../src/locale/zh_CN';
-import enUS from '../../src/locale/en_US';
 import '../../assets/index.less';
 
+import dayjs from 'dayjs';
+import React from 'react';
+
+import momentGenerateConfig from '../../src/generate/dayjs';
+import enUS from '../../src/locale/en_US';
+import thTH from '../../src/locale/th_TH';
+import Picker from '../../src/Picker';
+
+import type { Dayjs } from 'dayjs';
 // const defaultValue = moment('2019-09-03 05:02:03');
-const defaultValue = moment('2019-11-28 01:02:03');
+const defaultValue = dayjs('2019-11-28 01:02:03');
 
 export default () => {
-  const [value, setValue] = React.useState<Moment | null>(defaultValue);
-  const weekRef = React.useRef<Picker<Moment>>(null);
+  const [value, setValue] = React.useState<Dayjs | null>(defaultValue);
+  const weekRef = React.useRef<Picker<Day>>(null);
 
-  const onSelect = (newValue: Moment) => {
+  const onSelect = (newValue: Dayjs) => {
     console.log('Select:', newValue);
   };
 
-  const onChange = (newValue: Moment | null, formatString?: string) => {
+  const onChange = (newValue: Dayjs | null, formatString?: string) => {
     console.log('Change:', newValue, formatString);
     setValue(newValue);
   };
@@ -31,7 +33,7 @@ export default () => {
     presets: [
       {
         label: 'Hello World!',
-        value: moment(),
+        value: dayjs(),
       },
     ],
   };
@@ -47,14 +49,14 @@ export default () => {
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         <div style={{ margin: '0 8px' }}>
           <h3>Basic</h3>
-          <Picker<Moment> {...sharedProps} locale={zhCN} />
-          <Picker<Moment> {...sharedProps} locale={enUS} />
+          <Picker<Dayjs> {...sharedProps} locale={thTH} />
+          <Picker<Dayjs> {...sharedProps} locale={enUS} />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Uncontrolled</h3>
-          <Picker<Moment>
+          <Picker<Dayjs>
             generateConfig={momentGenerateConfig}
-            locale={zhCN}
+            locale={thTH}
             allowClear
             showToday
             renderExtraFooter={() => 'extra'}
@@ -62,13 +64,13 @@ export default () => {
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Datetime</h3>
-          <Picker<Moment>
+          <Picker<Dayjs>
             {...sharedProps}
-            locale={zhCN}
+            locale={thTH}
             defaultPickerValue={defaultValue.clone().subtract(1, 'month')}
             showTime={{
               showSecond: false,
-              defaultValue: moment('11:28:39', 'HH:mm:ss'),
+              defaultValue: dayjs('11:28:39', 'HH:mm:ss'),
             }}
             showToday
             disabledTime={(date) => {
@@ -83,7 +85,7 @@ export default () => {
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Uncontrolled Datetime</h3>
-          <Picker<Moment>
+          <Picker<Dayjs>
             format="YYYY-MM-DD HH:mm:ss"
             generateConfig={momentGenerateConfig}
             locale={enUS}
@@ -92,9 +94,9 @@ export default () => {
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Week</h3>
-          <Picker<Moment>
+          <Picker<Dayjs>
             {...sharedProps}
-            locale={zhCN}
+            locale={thTH}
             allowClear
             picker="week"
             renderExtraFooter={() => 'I am footer!!!'}
@@ -114,31 +116,31 @@ export default () => {
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Week</h3>
-          <Picker<Moment> generateConfig={momentGenerateConfig} locale={enUS} picker="week" />
+          <Picker<Dayjs> generateConfig={momentGenerateConfig} locale={enUS} picker="week" />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Quarter</h3>
-          <Picker<Moment> generateConfig={momentGenerateConfig} locale={enUS} picker="quarter" />
+          <Picker<Dayjs> generateConfig={momentGenerateConfig} locale={enUS} picker="quarter" />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Time</h3>
-          <Picker<Moment> {...sharedProps} locale={zhCN} picker="time" />
+          <Picker<Dayjs> {...sharedProps} locale={thTH} picker="time" />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Time 12</h3>
-          <Picker<Moment> {...sharedProps} locale={zhCN} picker="time" use12Hours />
+          <Picker<Dayjs> {...sharedProps} locale={thTH} picker="time" use12Hours />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Year</h3>
-          <Picker<Moment> {...sharedProps} locale={zhCN} picker="year" />
+          <Picker<Dayjs> {...sharedProps} locale={thTH} picker="year" />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Keyboard navigation (Tab key) disabled</h3>
-          <Picker<Moment> {...sharedProps} locale={enUS} tabIndex={-1} />
+          <Picker<Dayjs> {...sharedProps} locale={enUS} tabIndex={-1} />
         </div>
         <div style={{ margin: '0 8px' }}>
           <h3>Keyboard event with prevent default behaviors</h3>
-          <Picker<Moment> {...sharedProps} locale={enUS} onKeyDown={keyDown} />
+          <Picker<Dayjs> {...sharedProps} locale={enUS} onKeyDown={keyDown} />
         </div>
       </div>
     </div>

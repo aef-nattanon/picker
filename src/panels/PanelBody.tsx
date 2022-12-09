@@ -1,17 +1,18 @@
-import * as React from 'react';
 import classNames from 'classnames';
-import PanelContext from '../PanelContext';
-import type { GenerateConfig } from '../generate';
-import { getLastDay } from '../utils/timeUtil';
-import type { PanelMode } from '../interface';
-import { getCellDateDisabled } from '../utils/dateUtil';
+import * as React from 'react';
 
+import PanelContext from '../PanelContext';
+import { getCellDateDisabled } from '../utils/dateUtil';
+import { getLastDay } from '../utils/timeUtil';
+
+import type { GenerateConfig } from '../generate';
+import type { Locale, PanelMode } from '../interface';
 export type PanelBodyProps<DateType> = {
   prefixCls: string;
   disabledDate?: (date: DateType) => boolean;
   onSelect: (value: DateType) => void;
   picker?: PanelMode;
-
+  locale?: Locale;
   // By panel
   headerCells?: React.ReactNode;
   rowNum: number;
@@ -46,14 +47,13 @@ export default function PanelBody<DateType>({
   generateConfig,
   titleCell,
   headerCells,
-}: PanelBodyProps<DateType>) {
+}: PanelBodyProps<DateType>): JSX.Element {
   const { onDateMouseEnter, onDateMouseLeave, mode } = React.useContext(PanelContext);
 
   const cellPrefixCls = `${prefixCls}-cell`;
 
   // =============================== Body ===============================
   const rows: React.ReactNode[] = [];
-
   for (let i = 0; i < rowNum; i += 1) {
     const row: React.ReactNode[] = [];
     let rowStartDate: DateType;

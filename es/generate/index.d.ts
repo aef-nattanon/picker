@@ -6,6 +6,7 @@ export declare type GenerateConfig<DateType> = {
     getDate: (value: DateType) => number;
     getMonth: (value: DateType) => number;
     getYear: (value: DateType) => number;
+    getYearTH: (value: DateType) => number;
     getNow: () => DateType;
     getFixedDate: (fixed: string) => DateType;
     getEndDate: (value: DateType) => DateType;

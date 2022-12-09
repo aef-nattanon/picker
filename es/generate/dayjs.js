@@ -121,6 +121,9 @@ var generateConfig = {
   getYear: function getYear(date) {
     return date.year();
   },
+  getYearTH: function getYearTH(date) {
+    return date.year() + 543;
+  },
   getMonth: function getMonth(date) {
     return date.month();
   },

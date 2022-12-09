@@ -1,8 +1,8 @@
 import _extends from "@babel/runtime/helpers/esm/extends";
 import * as React from 'react';
-import Header from "../Header";
 import { YEAR_DECADE_COUNT } from '.';
 import PanelContext from "../../PanelContext";
+import Header from "../Header";
 
 function YearHeader(props) {
   var prefixCls = props.prefixCls,
@@ -10,7 +10,8 @@ function YearHeader(props) {
       viewDate = props.viewDate,
       onPrevDecade = props.onPrevDecade,
       onNextDecade = props.onNextDecade,
-      onDecadeClick = props.onDecadeClick;
+      onDecadeClick = props.onDecadeClick,
+      locale = props.locale;
 
   var _React$useContext = React.useContext(PanelContext),
       hideHeader = _React$useContext.hideHeader;
@@ -31,7 +32,7 @@ function YearHeader(props) {
     type: "button",
     onClick: onDecadeClick,
     className: "".concat(prefixCls, "-decade-btn")
-  }, startYear, "-", endYear));
+  }, locale.locale == 'th_TH' ? startYear + 543 : startYear, "-", locale.locale == 'th_TH' ? endYear + 543 : endYear));
 }
 
 export default YearHeader;
