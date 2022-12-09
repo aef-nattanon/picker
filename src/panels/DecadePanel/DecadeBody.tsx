@@ -56,7 +56,9 @@ function DecadeBody<DateType>(props: YearBodyProps<DateType>) {
       baseDate={baseDecadeYear}
       getCellText={(date) => {
         const startDecadeNumber = generateConfig.getYear(date);
-        const newDate = locale.locale == 'th_TH' ? startDecadeNumber + 543 : startDecadeNumber;
+        const newDate = ['th_TH', 'th', 'TH'].includes(locale.locale)
+          ? startDecadeNumber + 543
+          : startDecadeNumber;
 
         return `${newDate}-${newDate + DECADE_UNIT_DIFF_DES}`;
       }}

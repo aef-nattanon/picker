@@ -27,7 +27,7 @@ function DecadeHeader(props) {
     prefixCls: headerPrefixCls,
     onSuperPrev: onPrevDecades,
     onSuperNext: onNextDecades
-  }), locale.locale == 'th_TH' ? startYear + 543 : startYear, "-", locale.locale == 'th_TH' ? endYear + 543 : endYear);
+  }), ['th_TH', 'th', 'TH'].includes(locale.locale) ? startYear + 543 : startYear, "-", ['th_TH', 'th', 'TH'].includes(locale.locale) ? endYear + 543 : endYear);
 }
 
 export default DecadeHeader;

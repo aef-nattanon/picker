@@ -49,7 +49,7 @@ function YearBody(props) {
     rowNum: YEAR_ROW_COUNT,
     colNum: YEAR_COL_COUNT,
     baseDate: baseYear,
-    getCellText: locale.locale == 'th_TH' ? generateConfig.getYearTH : generateConfig.getYear,
+    getCellText: ['th_TH', 'th', 'TH'].includes(locale.locale) ? generateConfig.getYearTH : generateConfig.getYear,
     getCellClassName: getCellClassName,
     getCellDate: generateConfig.addYear,
     titleCell: function titleCell(date) {

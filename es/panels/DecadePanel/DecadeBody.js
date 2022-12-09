@@ -33,7 +33,7 @@ function DecadeBody(props) {
     baseDate: baseDecadeYear,
     getCellText: function getCellText(date) {
       var startDecadeNumber = generateConfig.getYear(date);
-      var newDate = locale.locale == 'th_TH' ? startDecadeNumber + 543 : startDecadeNumber;
+      var newDate = ['th_TH', 'th', 'TH'].includes(locale.locale) ? startDecadeNumber + 543 : startDecadeNumber;
       return "".concat(newDate, "-").concat(newDate + DECADE_UNIT_DIFF_DES);
     },
     getCellClassName: getCellClassName,
